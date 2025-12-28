@@ -21,6 +21,15 @@
 
   <body>
     <div id="root"></div>
+    <script>
+      // Ensure GitHub Pages opens the HashRouter entry by default.
+      (function () {
+        var repo = "/versos-finance";
+        if (location.pathname === repo + "/" && !location.hash) {
+          location.replace(repo + "/#/");
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
