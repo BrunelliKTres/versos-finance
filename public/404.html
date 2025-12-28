@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Versos Finance</title>
     <script>
-      // Redirect all 404s to the main page with hash
-      window.location.replace('/versos-finance/');
+      // GitHub Pages SPA fallback: redirect any 404 to the hash-router entry.
+      (function () {
+        var repo = "/versos-finance";
+        var l = window.location;
+
+        // Remove the repo prefix so we can reconstruct the client route.
+        var path = l.pathname.indexOf(repo) === 0 ? l.pathname.slice(repo.length) : l.pathname;
+        if (!path) path = "/";
+
+        // Preserve query string; ignore current hash (usually empty on 404).
+        l.replace(repo + "/#" + path + l.search);
+      })();
     </script>
   </head>
-  <body>
-  </body>
+  <body></body>
 </html>
